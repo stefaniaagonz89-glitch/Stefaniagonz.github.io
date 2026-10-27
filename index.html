@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Portfolio digital de Stefania Gonzalez, estudiante de secundaria con orientación en Ciencias Naturales.">
+  <title>Stefania Gonzalez | Portfolio digital</title>
+  <style>
+    :root {
+      --bg: #f8f7f3;
+      --surface: #ffffff;
+      --ink: #25332f;
+      --muted: #65736d;
+      --green: #527b69;
+      --green-dark: #315847;
+      --sage: #dce9df;
+      --peach: #f4dfd2;
+      --lavender: #e9e4f2;
+      --line: #e5e8e2;
+      --shadow: 0 12px 35px rgba(42, 65, 53, .08);
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--ink);
+      font-family: "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      line-height: 1.7;
+    }
+    a { color: inherit; text-decoration: none; }
+    .container { width: min(1100px, 90%); margin: 0 auto; }
+    header {
+      position: sticky; top: 0; z-index: 10;
+      background: rgba(248,247,243,.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(229,232,226,.85);
+    }
+    nav {
+      min-height: 72px; display: flex; align-items: center;
+      justify-content: space-between; gap: 24px;
+    }
+    .brand { font-weight: 800; letter-spacing: -.04em; font-size: 1.1rem; }
+    .brand span { color: var(--green); }
+    .nav-links { display: flex; gap: 24px; align-items: center; font-size: .94rem; color: var(--muted); }
+    .nav-links a:hover { color: var(--green-dark); }
+    .hero { padding: 94px 0 88px; overflow: hidden; }
+    .hero-grid { display: grid; grid-template-columns: 1.4fr .6fr; align-items: center; gap: 55px; }
+    .eyebrow {
+      display: inline-flex; align-items: center; gap: 9px;
+      padding: 7px 13px; border-radius: 99px; background: var(--sage);
+      color: var(--green-dark); font-size: .83rem; font-weight: 700;
+      letter-spacing: .04em; text-transform: uppercase;
+    }
+    .eyebrow::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: var(--green); }
+    h1 { font-size: clamp(2.7rem, 6vw, 5.2rem); line-height: 1.05; letter-spacing: -.065em; margin: 23px 0 20px; }
+    h1 span { color: var(--green); }
+    .hero p { max-width: 610px; color: var(--muted); font-size: 1.15rem; margin: 0 0 30px; }
+    .button {
+      display: inline-flex; align-items: center; justify-content: center;
+      padding: 12px 19px; border-radius: 12px; background: var(--green-dark);
+      color: white; font-weight: 700; transition: transform .2s, background .2s;
+    }
+    .button:hover { transform: translateY(-2px); background: var(--green); }
+    .hero-art {
+      min-height: 320px; border-radius: 34px; background: var(--sage);
+      position: relative; display: grid; place-items: center; box-shadow: var(--shadow);
+    }
+    .hero-art::before, .hero-art::after { content: ""; position: absolute; border-radius: 50%; }
+    .hero-art::before { width: 210px; height: 210px; background: var(--peach); top: 28px; right: 18px; }
+    .hero-art::after { width: 145px; height: 145px; background: var(--lavender); bottom: 22px; left: 18px; }
+    .art-card {
+      z-index: 1; width: 72%; padding: 27px 22px; background: rgba(255,255,255,.86);
+      border: 1px solid rgba(255,255,255,.8); border-radius: 23px; text-align: center;
+      box-shadow: 0 12px 30px rgba(42,65,53,.09); transform: rotate(-3deg);
+    }
+    .art-icon { font-size: 3.2rem; line-height: 1.3; }
+    .art-card strong { display: block; font-size: 1.15rem; }
+    .art-card small { color: var(--muted); }
+    section { padding: 75px 0; }
+    .section-heading { margin-bottom: 32px; }
+    .section-heading .kicker { color: var(--green); font-size: .8rem; text-transform: uppercase; letter-spacing: .15em; font-weight: 800; }
+    h2 { font-size: clamp(2rem, 4vw, 3rem); letter-spacing: -.05em; line-height: 1.15; margin: 8px 0 12px; }
+    .section-heading p { max-width: 660px; margin: 0; color: var(--muted); }
+    .about-wrap { display: grid; grid-template-columns: .7fr 1.3fr; gap: 45px; align-items: start; }
+    .about-note { padding: 28px; background: var(--lavender); border-radius: 22px; }
+    .about-note .big { font-size: 2.2rem; }
+    .about-note h3 { margin: 10px 0 7px; }
+    .about-note p { color: #625d70; margin: 0; font-size: .95rem; }
+    .about-copy { font-size: 1.06rem; color: var(--muted); }
+    .about-copy p:first-child { margin-top: 0; }
+    .projects { background: #f0f2ec; }
+    .year-title { display: flex; align-items: center; gap: 14px; margin: 38px 0 19px; }
+    .year-title h3 { margin: 0; font-size: 1.5rem; letter-spacing: -.04em; }
+    .year-title span { height: 1px; flex: 1; background: #d8dfd5; }
+    .project-grid { display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 18px; }
+    .project-card {
+      background: var(--surface); padding: 25px; border-radius: 19px;
+      border: 1px solid var(--line); box-shadow: 0 5px 18px rgba(42,65,53,.035);
+      display: flex; flex-direction: column; align-items: flex-start;
+    }
+    .project-card .icon {
+      display: grid; place-items: center; width: 47px; height: 47px;
+      border-radius: 14px; background: var(--sage); font-size: 1.45rem; margin-bottom: 16px;
+    }
+    .project-card:nth-child(3n+2) .icon { background: var(--peach); }
+    .project-card:nth-child(3n) .icon { background: var(--lavender); }
+    .project-card h4 { font-size: 1.12rem; line-height: 1.35; margin: 0 0 10px; }
+    .project-card p { color: var(--muted); font-size: .95rem; margin: 0; }
+    .tag { display: inline-block; margin-top: 18px; padding: 4px 10px; border-radius: 99px; background: #f2f5f0; color: var(--green-dark); font-size: .78rem; font-weight: 700; }
+    .closing { padding: 70px 0; }
+    .closing-card { padding: 43px; border-radius: 27px; background: var(--green-dark); color: white; display: flex; align-items: center; justify-content: space-between; gap: 30px; }
+    .closing-card h2 { margin-top: 0; }
+    .closing-card p { color: #dce8df; margin-bottom: 0; max-width: 600px; }
+    .closing-card .button { flex-shrink: 0; background: white; color: var(--green-dark); }
+    footer { padding: 25px 0; border-top: 1px solid var(--line); color: var(--muted); font-size: .88rem; }
+    .footer-inner { display: flex; justify-content: space-between; gap: 20px; flex-wrap: wrap; }
+    @media (max-width: 760px) {
+      .nav-links { gap: 13px; font-size: .83rem; }
+      .hero { padding: 65px 0; }
+      .hero-grid, .about-wrap { grid-template-columns: 1fr; gap: 30px; }
+      .hero-art { min-height: 260px; }
+      .project-grid { grid-template-columns: 1fr; }
+      section { padding: 55px 0; }
+      .closing-card { padding: 30px; flex-direction: column; align-items: flex-start; }
+    }
+    @media (max-width: 430px) {
+      nav { align-items: flex-start; flex-direction: column; padding: 15px 0; gap: 8px; }
+      .nav-links { width: 100%; justify-content: space-between; }
+      .hero-art { min-height: 230px; }
+      .art-card { width: 76%; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <nav class="container" aria-label="Navegación principal">
+      <a class="brand" href="#inicio">Stefania<span>.</span></a>
+      <div class="nav-links">
+        <a href="#sobre-mi">Sobre mí</a>
+        <a href="#proyectos">Proyectos</a>
+        <a href="#cierre">Mi recorrido</a>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero" id="inicio">
+      <div class="container hero-grid">
+        <div>
+          <span class="eyebrow">Portfolio digital · 2025—2026</span>
+          <h1>Hola, soy<br><span>Stefania Gonzalez.</span></h1>
+          <p>Estudiante de secundaria con orientación en Ciencias Naturales. Un espacio para compartir mis proyectos, experiencias y aprendizajes.</p>
+          <a class="button" href="#proyectos">Conocé mis proyectos&nbsp; ↓</a>
+        </div>
+        <div class="hero-art" aria-label="Ilustración decorativa sobre aprendizaje y ciencias">
+          <div class="art-card">
+            <div class="art-icon">🔬 🌱</div>
+            <strong>Curiosidad en acción</strong>
+            <small>Aprender · Investigar · Crecer</small>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="sobre-mi">
+      <div class="container">
+        <div class="section-heading">
+          <span class="kicker">Un poco sobre mí</span>
+          <h2>Aprender es abrir nuevas puertas.</h2>
+        </div>
+        <div class="about-wrap">
+          <aside class="about-note">
+            <div class="big">✦</div>
+            <h3>Curiosa y comprometida</h3>
+            <p>Me interesa descubrir nuevos contenidos, investigar y aprender a utilizar herramientas que me ayuden a crecer.</p>
+          </aside>
+          <div class="about-copy">
+            <p>Soy Stefania, una estudiante de secundaria.</p>
+            <p>Me considero una persona curiosa, comprometida y con ganas de aprender y encarar nuevos desafíos.</p>
+            <p>Disfruto de trabajar en proyectos en los que pueda investigar nuevos contenidos, además de aprender a utilizar nuevas herramientas. Este portfolio reúne mis proyectos y la experiencia adquirida en mis ACAP.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="projects" id="proyectos">
+      <div class="container">
+        <div class="section-heading">
+          <span class="kicker">Experiencias y aprendizajes</span>
+          <h2>Mis proyectos</h2>
+          <p>Una selección de actividades, talleres y visitas que formaron parte de mi recorrido durante 2025 y 2026.</p>
+        </div>
+
+        <div class="year-title"><h3>2025</h3><span></span></div>
+        <div class="project-grid">
+          <article class="project-card">
+            <div class="icon">💡</div>
+            <h4>Curso de Educación Financiera — Junior Achievement</h4>
+            <p>Esta experiencia me permitió aprender conceptos clave para armar y mantener un presupuesto personal, planificar metas de ahorro y entender cómo funcionan las inversiones y el crédito. A través de casos prácticos y actividades, desarrollé una visión más estratégica sobre cómo administrar recursos de forma responsable, una herramienta útil para mi día a día y mi futuro personal y profesional.</p>
+            <span class="tag">Educación financiera</span>
+          </article>
+          <article class="project-card">
+            <div class="icon">🧬</div>
+            <h4>Feria de ciencias en la Ciudad Universitaria</h4>
+            <p>La jornada comenzó con una charla sobre el origen y desarrollo de la especie humana, en la que vimos réplicas de cráneos y comparamos estructuras óseas desde los primeros homínidos hasta el ser humano actual. Luego recorrimos distintos stands, aprendimos a extraer ADN de una banana y realicé el procedimiento. También visitamos una muestra de biología marina sobre la anatomía, el hábitat y la conservación de los cangrejos.</p>
+            <span class="tag">Ciencias naturales</span>
+          </article>
+        </div>
+
+        <div class="year-title"><h3>2026</h3><span></span></div>
+        <div class="project-grid">
+          <article class="project-card">
+            <div class="icon">🏦</div>
+            <h4>Taller de educación financiera — Banco Ciudad</h4>
+            <p>Esta actividad me permitió reflexionar sobre la economía cotidiana y su historia. Trabajamos sobre la administración responsable del dinero, la elaboración de presupuestos y la importancia de planificar la economía personal a futuro. Durante la visita al museo, conocimos cómo fue cambiando la banca y cómo acompañó el crecimiento de las familias inmigrantes en el país.</p>
+            <span class="tag">Economía e historia</span>
+          </article>
+          <article class="project-card">
+            <div class="icon">🎓</div>
+            <h4>CBC UBA</h4>
+            <p>Recibimos orientación sobre la vida universitaria y la articulación entre el nivel secundario y el superior. Profundizamos en la estructura del CBC como primer año académico de la UBA y conocimos las diferencias entre tecnicaturas, carreras de grado y trayectos de posgrado según sus planes de estudio y duración. La visita me ayudó a despejar dudas sobre los estudios superiores y evaluar opciones para mi futuro profesional.</p>
+            <span class="tag">Orientación vocacional</span>
+          </article>
+          <article class="project-card">
+            <div class="icon">🕊️</div>
+            <h4>Colegio Argentino Árabe Islámico Omar Bin Al Jattab A-120</h4>
+            <p>Fue una jornada de sensibilización e historia en conmemoración de la Nakba, centrada en la memoria colectiva y la realidad del pueblo palestino. A través de un documental con material de archivo y testimonios, analizamos el contexto y las consecuencias de este proceso histórico. Cerramos con un debate sobre el rol de los jóvenes, los derechos humanos y las acciones de concientización e integración que podemos promover desde nuestra comunidad.</p>
+            <span class="tag">Historia y derechos humanos</span>
+          </article>
+          <article class="project-card">
+            <div class="icon">🌎</div>
+            <h4>Semana de las Ciencias de la Tierra — Facultad de Ciencias Exactas y Naturales, UBA</h4>
+            <p>Exploramos distintas áreas de la geología, la biología y la ecología. Asistí a una conferencia sobre espeleología e investigación de cavernas, donde analizamos la formación de cuevas, las condiciones ambientales extremas de su interior y las metodologías de trabajo de campo. Finalizamos con una visita guiada por la reserva ecológica de la facultad, conociendo especies vegetales autóctonas y la dinámica del ecosistema local.</p>
+            <span class="tag">Geología y ecología</span>
+          </article>
+          <article class="project-card">
+            <div class="icon">🌱</div>
+            <h4>Jardín San José — Pouponnière</h4>
+            <p>Los primeros encuentros estuvieron dedicados a observar las condiciones del espacio donde armaríamos una huerta ecológica. Comenzamos con la limpieza del lugar y seguimos con la planificación de ideas para decorar el cantero donde posteriormente plantaríamos. Finalmente, dividimos y repartimos los espacios que le corresponderían a cada grupo.</p>
+            <span class="tag">Ambiente y trabajo en equipo</span>
+          </article>
+          <article class="project-card">
+            <div class="icon">📚</div>
+            <h4>Taller de técnicas de estudio para universitarios — UCA</h4>
+            <p>En este taller aprendimos metodologías para conectar conceptos complejos y estructurar esquemas de síntesis. Profundizamos en la importancia de pasar del aprendizaje memorístico a una comprensión profunda y analítica, incorporando herramientas para diseñar planes de estudio eficientes.</p>
+            <span class="tag">Técnicas de estudio</span>
+          </article>
+          <article class="project-card">
+            <div class="icon">🤖</div>
+            <h4>Taller de inteligencia artificial y empleabilidad</h4>
+            <p>Analizamos el impacto de las herramientas de inteligencia artificial en el ámbito laboral y la búsqueda de empleo. Aprendimos a utilizarlas para organizar y optimizar el trabajo, destacando la importancia del pensamiento crítico, la verificación de datos y el uso ético y responsable de la tecnología. También exploramos la comunicación en redes sociales, la huella digital, la seguridad en internet, la privacidad de los datos personales y la gestión consciente de la presencia digital.</p>
+            <span class="tag">Tecnología y empleabilidad</span>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="closing" id="cierre">
+      <div class="container">
+        <div class="closing-card">
+          <div>
+            <h2>Cada experiencia suma.</h2>
+            <p>Este portfolio refleja parte de mi recorrido: experiencias que me permitieron descubrir temas nuevos, desarrollar habilidades y seguir pensando en mi futuro académico y profesional.</p>
+          </div>
+          <a class="button" href="#inicio">Volver al inicio ↑</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container footer-inner">
+      <span>© 2026 · Stefania Gonzalez</span>
+      <span>Portfolio digital · Estudiante de Ciencias Naturales</span>
+    </div>
+  </footer>
+</body>
+</html>
